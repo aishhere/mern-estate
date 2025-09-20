@@ -33,6 +33,6 @@ export const updateUser = async (req, res, next) => {
 
       res.status(200).json(rest);
     } catch (error){
-      next(error)
+      next(error);
     }
-  }
+  };
