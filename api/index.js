@@ -4,6 +4,14 @@ import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
+import cors from "cors";
+
+
+
+import uploadRouter from './routes/upload.route.js';
+import path from "path";
+
+
 import cookieParser from 'cookie-parser';
 
 
@@ -23,13 +31,29 @@ app.use(cookieParser());
 
 app.use(express.json());
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // React app URL
+    credentials: true,
+  })
+);
+
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+
+
+
+
+
 
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
+
+
+app.use("/api/upload", uploadRouter);
+
 
 
 app.use((err ,req , res, next) => {
@@ -42,3 +66,10 @@ app.use((err ,req , res, next) => {
     });
 });
 
+
+
+
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
