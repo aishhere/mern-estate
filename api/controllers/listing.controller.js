@@ -4,15 +4,15 @@ import { errorHandler } from "../utils/error.js";
 // Create new listing
 export const createListing = async (req, res, next) => {
   try {
-    console.log("📥 Incoming Listing Data:", req.body);
+    console.log("Incoming Listing Data:", req.body);
 
     const listing = await Listing.create(req.body);
 
-    console.log("✅ Listing Created Successfully:", listing);
+    console.log("Listing Created Successfully:", listing);
     return res.status(201).json({ success: true, listing });
 
   } catch (error) {
-    console.error("❌ Listing Creation Error:", error);
+    console.error("Listing Creation Error:", error);
     next(errorHandler(400, `Failed to create listing: ${error.message}`));
   }
 };
