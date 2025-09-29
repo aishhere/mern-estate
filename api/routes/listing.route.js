@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import path from "path";
-import { createListing } from "../controllers/listing.controller.js";
+import { createListing, deleteListing } from "../controllers/listing.controller.js";
 import { verifyToken } from "../utils/verifyUser.js";
 
 const router = express.Router();
@@ -22,5 +22,6 @@ const upload = multer({ storage });
 
 // Create listing route with file upload + auth check
 router.post("/create", verifyToken, upload.array("images", 10), createListing);
+router.delete('/delete/:id', verifyToken, deleteListing);
 
 export default router;
