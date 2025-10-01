@@ -156,7 +156,7 @@ useEffect(() => {
           "Content-Type": "application/json" 
         },
         credentials: "include",
-        body: JSON.stringify({ ...formData, userRef: currentUser._id }),
+        body: JSON.stringify({ ...formData, userRef: currentUser._id })
       });
 
       const data = await res.json();

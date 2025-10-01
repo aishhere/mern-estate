@@ -6,7 +6,11 @@ export const createListing = async (req, res, next) => {
   try {
     console.log("Incoming Listing Data:", req.body);
 
-    const listing = await Listing.create(req.body);
+     const listing = await Listing.create({
+      ...req.body,
+      userRef: req.user.id, // ✅ attach logged-in user as owner
+      imageUrls: req.body.imageUrls || [], // optional if you handle images
+    });
 
     console.log("Listing Created Successfully:", listing);
     return res.status(201).json({ success: true, listing });
