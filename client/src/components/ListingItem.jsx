@@ -8,7 +8,7 @@ export default function ListingItem({ listing }) {
     : '/placeholder.jpg';
 
   return (
-    <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[250px] flex-auto m-1'>
+    <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[250px]  m-1'>
       <Link to={`/listing/${listing._id}`}>
         <img src={imageUrl} alt={listing.name} 
         className='h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300 '
