@@ -21,15 +21,7 @@ export const createListing = async (req, res, next) => {
   }
 };
 
-// Get all listings
-export const getListings = async (req, res, next) => {
-  try {
-    const listings = await Listing.find();
-    res.status(200).json({ success: true, listings });
-  } catch (error) {
-    next(errorHandler(500, `Failed to fetch listings: ${error.message}`));
-  }
-};
+
 
 // Get single listing by ID
 export const getListingById = async (req, res, next) => {
@@ -97,7 +89,7 @@ res.status(200).json({ success: true, listing });
 };
 
 
-export const getlistings = async (req, res, next) => {
+export const getListings = async (req, res, next) => {
   try {
     const limit = parseInt(req.query.limit) || 9;
     const startIndex = parseInt(req.query.startIndex) || 0;
